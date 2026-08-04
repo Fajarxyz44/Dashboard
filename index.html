@@ -1,10 +1,243 @@
-<html>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORBIS // Sales Command Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="script.css">
+</head>
+<body>
 
-<h1>nabiel</h1>
-  <p>paling ganteng sedunia</p>
+<div class="grid-overlay"></div>
 
+<div class="deck">
 
+  <!-- ============ LEFT :: PROFILE COLUMN ============ -->
+  <aside class="col-left">
 
+    <div class="brand">
+      <span class="brand-mark">◈</span>
+      <span class="brand-name">ORBIS<span class="brand-dim">.SALES</span></span>
+    </div>
 
-  
+    <div class="profile-card">
+      <div class="hex-frame">
+        <svg viewBox="0 0 120 120" class="hex-ring">
+          <polygon points="60,4 112,32 112,88 60,116 8,88 8,32" class="hex-ring-path"/>
+        </svg>
+        <div class="avatar">DP</div>
+      </div>
+      <h1 class="profile-name">Dimas Pratama</h1>
+      <p class="profile-role">Senior Sales Executive</p>
+      <div class="profile-tag">
+        <span class="dot dot-live"></span> Aktif &middot; Wilayah Jawa Tengah
+      </div>
+    </div>
+
+    <div class="stat-strip">
+      <div class="stat-block">
+        <span class="stat-value">Rp 1.2M</span>
+        <span class="stat-label">Penjualan MTD</span>
+      </div>
+      <div class="stat-block">
+        <span class="stat-value">87%</span>
+        <span class="stat-label">Capaian Target</span>
+      </div>
+      <div class="stat-block">
+        <span class="stat-value">42</span>
+        <span class="stat-label">Klien Aktif</span>
+      </div>
+    </div>
+
+    <nav class="nav-menu">
+      <span class="nav-label">// Navigasi</span>
+      <a href="#materi" class="nav-item is-active" data-target="materi">
+        <span class="nav-icon">▣</span> Materi Penjualan
+      </a>
+      <a href="#katalog" class="nav-item" data-target="katalog">
+        <span class="nav-icon">▤</span> Katalog Produk
+      </a>
+      <a href="#harga" class="nav-item" data-target="harga">
+        <span class="nav-icon">▥</span> Daftar Harga
+      </a>
+      <a href="#performa" class="nav-item" data-target="performa">
+        <span class="nav-icon">▦</span> Performa
+      </a>
+      <a href="#kontak" class="nav-item" data-target="kontak">
+        <span class="nav-icon">▧</span> Kontak Klien
+      </a>
+    </nav>
+
+    <div class="left-footer">
+      <div class="signal">
+        <span class="signal-bars"><i></i><i></i><i></i><i></i></span>
+        Sinkron sistem: <b id="sync-time">--:--:--</b>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- divider / signature scan line -->
+  <div class="divider"><span class="divider-pulse"></span></div>
+
+  <!-- ============ RIGHT :: CONTENT COLUMN ============ -->
+  <main class="col-right">
+
+    <header class="top-bar">
+      <div class="search-wrap">
+        <span class="search-icon">⌕</span>
+        <input type="text" placeholder="Cari materi, produk, atau klien..." class="search-input" id="searchInput">
+      </div>
+      <div class="top-actions">
+        <button class="icon-btn" title="Notifikasi">
+          🔔<span class="ping"></span>
+        </button>
+        <button class="btn-primary" id="newMaterialBtn">+ Materi Baru</button>
+      </div>
+    </header>
+
+    <section class="hero-block">
+      <p class="eyebrow">Ringkasan Hari Ini</p>
+      <h2 class="hero-title">Semua materi penjualanmu, <span class="text-cyan">satu panel kendali.</span></h2>
+      <p class="hero-sub">Akses cepat katalog, harga, dan alat presentasi untuk menutup deal lebih efisien.</p>
+    </section>
+
+    <section id="materi" class="panel-section">
+      <div class="section-head">
+        <h3>Materi Penjualan</h3>
+        <span class="section-count">6 dokumen</span>
+      </div>
+
+      <div class="card-grid">
+
+        <article class="material-card" data-type="Presentasi">
+          <div class="card-glow"></div>
+          <span class="card-tag">PPTX</span>
+          <h4>Company &amp; Product Deck</h4>
+          <p>Presentasi utama perusahaan, lini produk, dan keunggulan kompetitif untuk pitching awal.</p>
+          <div class="card-meta">
+            <span>Diperbarui 2 hari lalu</span>
+            <button class="card-action">Unduh ↓</button>
+          </div>
+        </article>
+
+        <article class="material-card" data-type="Katalog">
+          <div class="card-glow"></div>
+          <span class="card-tag">PDF</span>
+          <h4>Katalog Produk Lengkap</h4>
+          <p>Spesifikasi teknis, varian, dan foto produk untuk seluruh lini barang aktif.</p>
+          <div class="card-meta">
+            <span>Diperbarui 5 hari lalu</span>
+            <button class="card-action">Unduh ↓</button>
+          </div>
+        </article>
+
+        <article class="material-card" data-type="Harga">
+          <div class="card-glow"></div>
+          <span class="card-tag">XLSX</span>
+          <h4>Price List &amp; Skema Diskon</h4>
+          <p>Daftar harga resmi beserta skema diskon volume dan syarat pembayaran.</p>
+          <div class="card-meta">
+            <span>Diperbarui hari ini</span>
+            <button class="card-action">Unduh ↓</button>
+          </div>
+        </article>
+
+        <article class="material-card" data-type="Studi Kasus">
+          <div class="card-glow"></div>
+          <span class="card-tag">PDF</span>
+          <h4>Studi Kasus &amp; Testimoni</h4>
+          <p>Kisah sukses klien dan kutipan testimoni untuk memperkuat kepercayaan prospek.</p>
+          <div class="card-meta">
+            <span>Diperbarui 1 minggu lalu</span>
+            <button class="card-action">Unduh ↓</button>
+          </div>
+        </article>
+
+        <article class="material-card" data-type="Brosur">
+          <div class="card-glow"></div>
+          <span class="card-tag">PDF</span>
+          <h4>Brosur Produk Unggulan</h4>
+          <p>Ringkasan satu halaman untuk dibagikan langsung ke calon klien di lapangan.</p>
+          <div class="card-meta">
+            <span>Diperbarui 3 hari lalu</span>
+            <button class="card-action">Unduh ↓</button>
+          </div>
+        </article>
+
+        <article class="material-card" data-type="Skrip">
+          <div class="card-glow"></div>
+          <span class="card-tag">DOCX</span>
+          <h4>Skrip Panggilan &amp; FAQ</h4>
+          <p>Panduan percakapan dan jawaban atas pertanyaan umum calon pelanggan.</p>
+          <div class="card-meta">
+            <span>Diperbarui 1 hari lalu</span>
+            <button class="card-action">Unduh ↓</button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="performa" class="panel-section">
+      <div class="section-head">
+        <h3>Performa Penjualan</h3>
+        <span class="section-count">6 bulan terakhir</span>
+      </div>
+
+      <div class="chart-panel">
+        <div class="bar-chart" id="barChart">
+          <div class="bar" style="--val:55%"><span class="bar-fill"></span><i>Mar</i></div>
+          <div class="bar" style="--val:68%"><span class="bar-fill"></span><i>Apr</i></div>
+          <div class="bar" style="--val:47%"><span class="bar-fill"></span><i>Mei</i></div>
+          <div class="bar" style="--val:74%"><span class="bar-fill"></span><i>Jun</i></div>
+          <div class="bar" style="--val:81%"><span class="bar-fill"></span><i>Jul</i></div>
+          <div class="bar" style="--val:87%"><span class="bar-fill"></span><i>Agu</i></div>
+        </div>
+        <div class="chart-legend">
+          <span><i class="legend-dot"></i> Capaian terhadap target bulanan</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontak" class="panel-section">
+      <div class="section-head">
+        <h3>Klien Prioritas</h3>
+        <span class="section-count">Follow-up minggu ini</span>
+      </div>
+      <ul class="client-list">
+        <li>
+          <span class="client-initial">PT</span>
+          <div class="client-info">
+            <b>PT Cahaya Nusantara</b>
+            <small>Negosiasi harga &middot; kontrak Rp 320jt</small>
+          </div>
+          <span class="status-pill status-warm">Panas</span>
+        </li>
+        <li>
+          <span class="client-initial">KJ</span>
+          <div class="client-info">
+            <b>Koperasi Jaya Makmur</b>
+            <small>Menunggu persetujuan internal</small>
+          </div>
+          <span class="status-pill status-mid">Proses</span>
+        </li>
+        <li>
+          <span class="client-initial">TS</span>
+          <div class="client-info">
+            <b>Toko Sumber Rejeki</b>
+            <small>Perpanjangan kontrak tahunan</small>
+          </div>
+          <span class="status-pill status-cold">Baru</span>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+</div>
+
+<script src="style.js"></script>
+</body>
 </html>
