@@ -1,76 +1,100 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ---------- live sync clock ---------- */
-  const syncEl = document.getElementById('sync-time');
-  function updateClock(){
-    if(!syncEl) return;
-    const now = new Date();
-    const h = String(now.getHours()).padStart(2,'0');
-    const m = String(now.getMinutes()).padStart(2,'0');
-    const s = String(now.getSeconds()).padStart(2,'0');
-    syncEl.textContent = `${h}:${m}:${s}`;
-  }
-  updateClock();
-  setInterval(updateClock, 1000);
+  /* ---------------- Mobile nav toggle ---------------- */
+  const navToggle = document.getElementById('navToggle');
+  const panelLeft = document.getElementById('panelLeft');
 
-  /* ---------- left nav: active state + smooth scroll ---------- */
-  const navItems = document.querySelectorAll('.nav-item');
-  navItems.forEach(item => {
-    item.addEventListener('click', (e) => {
-      e.preventDefault();
-      navItems.forEach(n => n.classList.remove('is-active'));
-      item.classList.add('is-active');
-      const targetId = item.getAttribute('data-target');
-      const target = document.getElementById(targetId);
-      if(target){
-        target.scrollIntoView({ behavior:'smooth', block:'start' });
-      }
+  navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('open');
+    panelLeft.classList.toggle('open');
+  });
+
+  // close mobile panel after tapping a nav link
+  document.querySelectorAll('[data-nav]').forEach(link => {
+    link.addEventListener('click', () => {
+      navToggle.classList.remove('open');
+      panelLeft.classList.remove('open');
     });
   });
 
-  /* ---------- search filter across material cards ---------- */
-  const searchInput = document.getElementById('searchInput');
-  const cards = document.querySelectorAll('.material-card');
-  if(searchInput){
-    searchInput.addEventListener('input', () => {
-      const query = searchInput.value.trim().toLowerCase();
-      cards.forEach(card => {
-        const title = card.querySelector('h4')?.textContent.toLowerCase() || '';
-        const desc  = card.querySelector('p')?.textContent.toLowerCase() || '';
-        const type  = card.dataset.type?.toLowerCase() || '';
-        const matches = title.includes(query) || desc.includes(query) || type.includes(query);
-        card.style.display = matches ? '' : 'none';
-      });
-    });
-  }
+  /* ---------------- Active nav link on scroll ---------------- */
+  const sections = document.querySelectorAll('.panel-right .section');
+  const navLinks = document.querySelectorAll('[data-nav]');
 
-  /* ---------- animated bar chart on scroll into view ---------- */
-  const bars = document.querySelectorAll('.bar');
-  const chartObserver = new IntersectionObserver((entries) => {
+  const setActiveLink = (id) => {
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+    });
+  };
+
+  const sectionObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add('in-view');
+      if (entry.isIntersecting) {
+        setActiveLink(entry.target.id);
+      }
+    });
+  }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+
+  sections.forEach(section => sectionObserver.observe(section));
+
+  /* ---------------- Animated stat counters ---------------- */
+  const statValues = document.querySelectorAll('.stat-value');
+
+  const animateCount = (el) => {
+    const target = parseInt(el.dataset.count, 10);
+    const duration = 1400;
+    const start = performance.now();
+
+    const step = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      el.textContent = Math.round(eased * target).toLocaleString('id-ID');
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+
+  const statObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCount(entry.target);
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.6 });
+
+  statValues.forEach(el => statObserver.observe(el));
+
+  /* ---------------- Animated sales bar chart ---------------- */
+  const bars = document.querySelectorAll('.bar');
+
+  const chartObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        bars.forEach((bar, i) => {
+          setTimeout(() => {
+            bar.style.height = `${bar.dataset.height}%`;
+          }, i * 90);
+        });
+        obs.disconnect();
       }
     });
   }, { threshold: 0.4 });
-  bars.forEach(bar => chartObserver.observe(bar));
 
-  /* ---------- quick feedback for primary action button ---------- */
-  const newMaterialBtn = document.getElementById('newMaterialBtn');
-  if(newMaterialBtn){
-    newMaterialBtn.addEventListener('click', () => {
-      newMaterialBtn.textContent = 'Tersimpan ✓';
-      setTimeout(() => { newMaterialBtn.textContent = '+ Materi Baru'; }, 1600);
+  const chartCard = document.querySelector('.chart-card');
+  if (chartCard) chartObserver.observe(chartCard);
+
+  /* ---------------- CTA form ---------------- */
+  const ctaForm = document.getElementById('ctaForm');
+  const formSuccess = document.getElementById('formSuccess');
+
+  if (ctaForm) {
+    ctaForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      formSuccess.classList.add('show');
+      ctaForm.reset();
+      setTimeout(() => formSuccess.classList.remove('show'), 4000);
     });
   }
-
-  /* ---------- download button micro-interaction ---------- */
-  document.querySelectorAll('.card-action').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const original = btn.textContent;
-      btn.textContent = 'Mengunduh...';
-      setTimeout(() => { btn.textContent = original; }, 1200);
-    });
-  });
 
 });
