@@ -3,241 +3,277 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ORBIS // Sales Command Deck</title>
+<title>Arka Dinata — Sales Profile Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="script.css">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="grid-overlay"></div>
+<div class="noise-overlay"></div>
+<div class="grid-glow"></div>
 
-<div class="deck">
+<button class="nav-toggle" id="navToggle" aria-label="Buka menu">
+  <span></span><span></span><span></span>
+</button>
 
-  <!-- ============ LEFT :: PROFILE COLUMN ============ -->
-  <aside class="col-left">
+<div class="app">
 
-    <div class="brand">
-      <span class="brand-mark">◈</span>
-      <span class="brand-name">ORBIS<span class="brand-dim">.SALES</span></span>
+  <!-- ===== LEFT: PROFILE PANEL ===== -->
+  <aside class="panel-left" id="panelLeft">
+    <div class="left-inner">
+
+      <div class="brand">
+        <span class="brand-mark">◆</span>
+        <span class="brand-name">NOVA<span>COMMERCE</span></span>
+      </div>
+
+      <div class="orbit-avatar">
+        <div class="orbit-ring ring-1"></div>
+        <div class="orbit-ring ring-2"></div>
+        <div class="orbit-dot"></div>
+        <div class="avatar-core">AD</div>
+      </div>
+
+      <h1 class="profile-name">Arka Dinata</h1>
+      <p class="profile-role">Sales Executive · Nova Commerce</p>
+
+      <div class="status-pill">
+        <span class="pulse-dot"></span> Aktif menerima klien baru
+      </div>
+
+      <nav class="side-nav" id="sideNav">
+        <a href="#beranda" class="nav-link active" data-nav>
+          <span class="nav-idx">01</span> Beranda
+        </a>
+        <a href="#katalog" class="nav-link" data-nav>
+          <span class="nav-idx">02</span> Katalog Produk
+        </a>
+        <a href="#statistik" class="nav-link" data-nav>
+          <span class="nav-idx">03</span> Statistik Penjualan
+        </a>
+        <a href="#testimoni" class="nav-link" data-nav>
+          <span class="nav-idx">04</span> Testimoni Klien
+        </a>
+        <a href="#kontak" class="nav-link" data-nav>
+          <span class="nav-idx">05</span> Kontak
+        </a>
+      </nav>
+
+      <div class="left-footer">
+        <div class="contact-row">
+          <span class="contact-label">Email</span>
+          <span class="contact-value">arka.dinata@novacommerce.id</span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-label">Telepon</span>
+          <span class="contact-value">+62 812-3456-7890</span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-label">Wilayah</span>
+          <span class="contact-value">Jawa Tengah &amp; DIY</span>
+        </div>
+        <div class="social-row">
+          <a href="#" class="social-chip">in</a>
+          <a href="#" class="social-chip">ig</a>
+          <a href="#" class="social-chip">wa</a>
+        </div>
+      </div>
+
     </div>
-
-    <div class="profile-card">
-      <div class="hex-frame">
-        <svg viewBox="0 0 120 120" class="hex-ring">
-          <polygon points="60,4 112,32 112,88 60,116 8,88 8,32" class="hex-ring-path"/>
-        </svg>
-        <div class="avatar">DP</div>
-      </div>
-      <h1 class="profile-name">Dimas Pratama</h1>
-      <p class="profile-role">Senior Sales Executive</p>
-      <div class="profile-tag">
-        <span class="dot dot-live"></span> Aktif &middot; Wilayah Jawa Tengah
-      </div>
-    </div>
-
-    <div class="stat-strip">
-      <div class="stat-block">
-        <span class="stat-value">Rp 1.2M</span>
-        <span class="stat-label">Penjualan MTD</span>
-      </div>
-      <div class="stat-block">
-        <span class="stat-value">87%</span>
-        <span class="stat-label">Capaian Target</span>
-      </div>
-      <div class="stat-block">
-        <span class="stat-value">42</span>
-        <span class="stat-label">Klien Aktif</span>
-      </div>
-    </div>
-
-    <nav class="nav-menu">
-      <span class="nav-label">// Navigasi</span>
-      <a href="#materi" class="nav-item is-active" data-target="materi">
-        <span class="nav-icon">▣</span> Materi Penjualan
-      </a>
-      <a href="#katalog" class="nav-item" data-target="katalog">
-        <span class="nav-icon">▤</span> Katalog Produk
-      </a>
-      <a href="#harga" class="nav-item" data-target="harga">
-        <span class="nav-icon">▥</span> Daftar Harga
-      </a>
-      <a href="#performa" class="nav-item" data-target="performa">
-        <span class="nav-icon">▦</span> Performa
-      </a>
-      <a href="#kontak" class="nav-item" data-target="kontak">
-        <span class="nav-icon">▧</span> Kontak Klien
-      </a>
-    </nav>
-
-    <div class="left-footer">
-      <div class="signal">
-        <span class="signal-bars"><i></i><i></i><i></i><i></i></span>
-        Sinkron sistem: <b id="sync-time">--:--:--</b>
-      </div>
-    </div>
-
   </aside>
 
-  <!-- divider / signature scan line -->
-  <div class="divider"><span class="divider-pulse"></span></div>
+  <!-- ===== RIGHT: CONTENT PANEL ===== -->
+  <main class="panel-right" id="panelRight">
 
-  <!-- ============ RIGHT :: CONTENT COLUMN ============ -->
-  <main class="col-right">
+    <!-- HERO -->
+    <section class="section hero" id="beranda">
+      <p class="eyebrow">Materi Penjualan · Kuartal Ini</p>
+      <h2 class="hero-title">
+        Menghubungkan produk terbaik<br>dengan klien yang tepat.
+      </h2>
+      <p class="hero-desc">
+        Portofolio penjualan, katalog produk, dan performa terkini
+        dirangkum dalam satu panel yang mudah dibagikan ke klien.
+      </p>
 
-    <header class="top-bar">
-      <div class="search-wrap">
-        <span class="search-icon">⌕</span>
-        <input type="text" placeholder="Cari materi, produk, atau klien..." class="search-input" id="searchInput">
-      </div>
-      <div class="top-actions">
-        <button class="icon-btn" title="Notifikasi">
-          🔔<span class="ping"></span>
-        </button>
-        <button class="btn-primary" id="newMaterialBtn">+ Materi Baru</button>
-      </div>
-    </header>
-
-    <section class="hero-block">
-      <p class="eyebrow">Ringkasan Hari Ini</p>
-      <h2 class="hero-title">Semua materi penjualanmu, <span class="text-cyan">satu panel kendali.</span></h2>
-      <p class="hero-sub">Akses cepat katalog, harga, dan alat presentasi untuk menutup deal lebih efisien.</p>
-    </section>
-
-    <section id="materi" class="panel-section">
-      <div class="section-head">
-        <h3>Materi Penjualan</h3>
-        <span class="section-count">6 dokumen</span>
-      </div>
-
-      <div class="card-grid">
-
-        <article class="material-card" data-type="Presentasi">
-          <div class="card-glow"></div>
-          <span class="card-tag">PPTX</span>
-          <h4>Company &amp; Product Deck</h4>
-          <p>Presentasi utama perusahaan, lini produk, dan keunggulan kompetitif untuk pitching awal.</p>
-          <div class="card-meta">
-            <span>Diperbarui 2 hari lalu</span>
-            <button class="card-action">Unduh ↓</button>
-          </div>
-        </article>
-
-        <article class="material-card" data-type="Katalog">
-          <div class="card-glow"></div>
-          <span class="card-tag">PDF</span>
-          <h4>Katalog Produk Lengkap</h4>
-          <p>Spesifikasi teknis, varian, dan foto produk untuk seluruh lini barang aktif.</p>
-          <div class="card-meta">
-            <span>Diperbarui 5 hari lalu</span>
-            <button class="card-action">Unduh ↓</button>
-          </div>
-        </article>
-
-        <article class="material-card" data-type="Harga">
-          <div class="card-glow"></div>
-          <span class="card-tag">XLSX</span>
-          <h4>Price List &amp; Skema Diskon</h4>
-          <p>Daftar harga resmi beserta skema diskon volume dan syarat pembayaran.</p>
-          <div class="card-meta">
-            <span>Diperbarui hari ini</span>
-            <button class="card-action">Unduh ↓</button>
-          </div>
-        </article>
-
-        <article class="material-card" data-type="Studi Kasus">
-          <div class="card-glow"></div>
-          <span class="card-tag">PDF</span>
-          <h4>Studi Kasus &amp; Testimoni</h4>
-          <p>Kisah sukses klien dan kutipan testimoni untuk memperkuat kepercayaan prospek.</p>
-          <div class="card-meta">
-            <span>Diperbarui 1 minggu lalu</span>
-            <button class="card-action">Unduh ↓</button>
-          </div>
-        </article>
-
-        <article class="material-card" data-type="Brosur">
-          <div class="card-glow"></div>
-          <span class="card-tag">PDF</span>
-          <h4>Brosur Produk Unggulan</h4>
-          <p>Ringkasan satu halaman untuk dibagikan langsung ke calon klien di lapangan.</p>
-          <div class="card-meta">
-            <span>Diperbarui 3 hari lalu</span>
-            <button class="card-action">Unduh ↓</button>
-          </div>
-        </article>
-
-        <article class="material-card" data-type="Skrip">
-          <div class="card-glow"></div>
-          <span class="card-tag">DOCX</span>
-          <h4>Skrip Panggilan &amp; FAQ</h4>
-          <p>Panduan percakapan dan jawaban atas pertanyaan umum calon pelanggan.</p>
-          <div class="card-meta">
-            <span>Diperbarui 1 hari lalu</span>
-            <button class="card-action">Unduh ↓</button>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <section id="performa" class="panel-section">
-      <div class="section-head">
-        <h3>Performa Penjualan</h3>
-        <span class="section-count">6 bulan terakhir</span>
-      </div>
-
-      <div class="chart-panel">
-        <div class="bar-chart" id="barChart">
-          <div class="bar" style="--val:55%"><span class="bar-fill"></span><i>Mar</i></div>
-          <div class="bar" style="--val:68%"><span class="bar-fill"></span><i>Apr</i></div>
-          <div class="bar" style="--val:47%"><span class="bar-fill"></span><i>Mei</i></div>
-          <div class="bar" style="--val:74%"><span class="bar-fill"></span><i>Jun</i></div>
-          <div class="bar" style="--val:81%"><span class="bar-fill"></span><i>Jul</i></div>
-          <div class="bar" style="--val:87%"><span class="bar-fill"></span><i>Agu</i></div>
+      <div class="stat-grid">
+        <div class="stat-card">
+          <span class="stat-value" data-count="482">0</span>
+          <span class="stat-unit">unit</span>
+          <span class="stat-label">Produk Terjual / Bulan</span>
         </div>
-        <div class="chart-legend">
-          <span><i class="legend-dot"></i> Capaian terhadap target bulanan</span>
+        <div class="stat-card">
+          <span class="stat-value" data-count="97">0</span>
+          <span class="stat-unit">%</span>
+          <span class="stat-label">Kepuasan Klien</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" data-count="156">0</span>
+          <span class="stat-unit">klien</span>
+          <span class="stat-label">Klien Aktif</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" data-count="12">0</span>
+          <span class="stat-unit">th</span>
+          <span class="stat-label">Pengalaman</span>
         </div>
       </div>
     </section>
 
-    <section id="kontak" class="panel-section">
+    <!-- KATALOG -->
+    <section class="section" id="katalog">
       <div class="section-head">
-        <h3>Klien Prioritas</h3>
-        <span class="section-count">Follow-up minggu ini</span>
+        <p class="eyebrow">Katalog</p>
+        <h3 class="section-title">Produk Unggulan</h3>
       </div>
-      <ul class="client-list">
-        <li>
-          <span class="client-initial">PT</span>
-          <div class="client-info">
-            <b>PT Cahaya Nusantara</b>
-            <small>Negosiasi harga &middot; kontrak Rp 320jt</small>
+
+      <div class="product-grid">
+
+        <article class="product-card">
+          <div class="product-top">
+            <span class="product-badge badge-hot">Terlaris</span>
+            <span class="product-price">Rp 4.250.000</span>
           </div>
-          <span class="status-pill status-warm">Panas</span>
-        </li>
-        <li>
-          <span class="client-initial">KJ</span>
-          <div class="client-info">
-            <b>Koperasi Jaya Makmur</b>
-            <small>Menunggu persetujuan internal</small>
+          <h4 class="product-name">Aurora Smart Panel X1</h4>
+          <p class="product-desc">Panel kontrol pintar untuk toko &amp; gudang, hemat energi hingga 30%.</p>
+          <div class="product-meta">
+            <span>Stok: 128</span>
+            <span>Garansi 2 th</span>
           </div>
-          <span class="status-pill status-mid">Proses</span>
-        </li>
-        <li>
-          <span class="client-initial">TS</span>
-          <div class="client-info">
-            <b>Toko Sumber Rejeki</b>
-            <small>Perpanjangan kontrak tahunan</small>
+        </article>
+
+        <article class="product-card">
+          <div class="product-top">
+            <span class="product-badge badge-new">Baru</span>
+            <span class="product-price">Rp 1.890.000</span>
           </div>
-          <span class="status-pill status-cold">Baru</span>
-        </li>
-      </ul>
+          <h4 class="product-name">Nimbus Pocket Scanner</h4>
+          <p class="product-desc">Scanner barcode nirkabel dengan sinkronisasi stok real-time.</p>
+          <div class="product-meta">
+            <span>Stok: 64</span>
+            <span>Garansi 1 th</span>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-top">
+            <span class="product-badge badge-best">Pilihan</span>
+            <span class="product-price">Rp 6.750.000</span>
+          </div>
+          <h4 class="product-name">Vertex POS Terminal</h4>
+          <p class="product-desc">Sistem kasir all-in-one, terintegrasi laporan penjualan otomatis.</p>
+          <div class="product-meta">
+            <span>Stok: 42</span>
+            <span>Garansi 3 th</span>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-top">
+            <span class="product-badge badge-hot">Terlaris</span>
+            <span class="product-price">Rp 980.000</span>
+          </div>
+          <h4 class="product-name">Halo Smart Label Printer</h4>
+          <p class="product-desc">Cetak label harga &amp; barcode cepat, kompatibel semua ukuran rak.</p>
+          <div class="product-meta">
+            <span>Stok: 210</span>
+            <span>Garansi 1 th</span>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-top">
+            <span class="product-badge badge-new">Baru</span>
+            <span class="product-price">Rp 12.400.000</span>
+          </div>
+          <h4 class="product-name">Zenith Cold Storage Unit</h4>
+          <p class="product-desc">Unit penyimpanan dingin hemat daya untuk ritel bahan segar.</p>
+          <div class="product-meta">
+            <span>Stok: 18</span>
+            <span>Garansi 3 th</span>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-top">
+            <span class="product-badge badge-best">Pilihan</span>
+            <span class="product-price">Rp 2.150.000</span>
+          </div>
+          <h4 class="product-name">Pulse Inventory Sensor</h4>
+          <p class="product-desc">Sensor stok otomatis, kirim notifikasi saat barang menipis.</p>
+          <div class="product-meta">
+            <span>Stok: 96</span>
+            <span>Garansi 2 th</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- STATISTIK -->
+    <section class="section" id="statistik">
+      <div class="section-head">
+        <p class="eyebrow">Performa</p>
+        <h3 class="section-title">Statistik Penjualan 6 Bulan Terakhir</h3>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-bars" id="chartBars">
+          <div class="bar-col"><div class="bar" data-height="52"></div><span>Mar</span></div>
+          <div class="bar-col"><div class="bar" data-height="64"></div><span>Apr</span></div>
+          <div class="bar-col"><div class="bar" data-height="58"></div><span>Mei</span></div>
+          <div class="bar-col"><div class="bar" data-height="78"></div><span>Jun</span></div>
+          <div class="bar-col"><div class="bar" data-height="85"></div><span>Jul</span></div>
+          <div class="bar-col"><div class="bar" data-height="100"></div><span>Agu</span></div>
+        </div>
+        <p class="chart-note">Volume penjualan relatif terhadap bulan tertinggi (Agustus).</p>
+      </div>
+    </section>
+
+    <!-- TESTIMONI -->
+    <section class="section" id="testimoni">
+      <div class="section-head">
+        <p class="eyebrow">Kata Klien</p>
+        <h3 class="section-title">Testimoni</h3>
+      </div>
+
+      <div class="testi-grid">
+        <blockquote class="testi-card">
+          <p>“Pengiriman selalu tepat waktu dan laporan stok jadi jauh lebih rapi sejak pakai Vertex POS.”</p>
+          <footer>— Dewi S., Pemilik Toko Berkah Jaya</footer>
+        </blockquote>
+        <blockquote class="testi-card">
+          <p>“Tim sangat responsif, rekomendasi produk sesuai kebutuhan gudang kami.”</p>
+          <footer>— Rian P., Manajer Operasional Sinar Abadi</footer>
+        </blockquote>
+        <blockquote class="testi-card">
+          <p>“Sensor stok otomatisnya membantu kami menghindari kehabisan barang saat ramai.”</p>
+          <footer>— Fitri A., Owner Warung Segar</footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- KONTAK -->
+    <section class="section section-end" id="kontak">
+      <div class="cta-card">
+        <p class="eyebrow">Mulai Kerja Sama</p>
+        <h3 class="section-title">Butuh Penawaran Khusus?</h3>
+        <p class="cta-desc">Kirim kebutuhan bisnis Anda, tim kami akan menyiapkan penawaran dalam 1x24 jam.</p>
+        <form class="cta-form" id="ctaForm">
+          <input type="text" placeholder="Nama Anda" required>
+          <input type="email" placeholder="Email Anda" required>
+          <textarea placeholder="Ceritakan kebutuhan Anda..." rows="3"></textarea>
+          <button type="submit" class="cta-btn">Kirim Permintaan</button>
+        </form>
+        <p class="form-success" id="formSuccess">Terima kasih, permintaan Anda sudah terkirim.</p>
+      </div>
     </section>
 
   </main>
 </div>
 
-<script src="style.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
