@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FAJAR MUTAWA — Sales Profile Dashboard</title>
+<title>Arka Dinata — Sales Profile Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -26,17 +26,17 @@
 
       <div class="brand">
         <span class="brand-mark">◆</span>
-        <span class="brand-name">FATIK<span>COMMERCE</span></span>
+        <span class="brand-name">NOVA<span>COMMERCE</span></span>
       </div>
 
       <div class="orbit-avatar">
         <div class="orbit-ring ring-1"></div>
         <div class="orbit-ring ring-2"></div>
         <div class="orbit-dot"></div>
-        <div class="avatar-core">FA</div>
+        <div class="avatar-core">AD</div>
       </div>
 
-      <h1 class="profile-name">FAJAR MUTAWA</h1>
+      <h1 class="profile-name">Arka Dinata</h1>
       <p class="profile-role">Sales Executive · Nova Commerce</p>
 
       <div class="status-pill">
@@ -64,11 +64,11 @@
       <div class="left-footer">
         <div class="contact-row">
           <span class="contact-label">Email</span>
-          <span class="contact-value">farhardi911@gmail.com</span>
+          <span class="contact-value">arka.dinata@novacommerce.id</span>
         </div>
         <div class="contact-row">
           <span class="contact-label">Telepon</span>
-          <span class="contact-value">+6285136398679</span>
+          <span class="contact-value">+62 812-3456-7890</span>
         </div>
         <div class="contact-row">
           <span class="contact-label">Wilayah</span>
@@ -131,7 +131,7 @@
 
       <div class="product-grid">
 
-        <article class="product-card">
+        <article class="product-card" data-name="Aurora Smart Panel X1" data-price="4250000">
           <div class="product-top">
             <span class="product-badge badge-hot">Terlaris</span>
             <span class="product-price">Rp 4.250.000</span>
@@ -142,9 +142,10 @@
             <span>Stok: 128</span>
             <span>Garansi 2 th</span>
           </div>
+          <button type="button" class="buy-btn" data-buy>Beli Sekarang</button>
         </article>
 
-        <article class="product-card">
+        <article class="product-card" data-name="Nimbus Pocket Scanner" data-price="1890000">
           <div class="product-top">
             <span class="product-badge badge-new">Baru</span>
             <span class="product-price">Rp 1.890.000</span>
@@ -155,9 +156,10 @@
             <span>Stok: 64</span>
             <span>Garansi 1 th</span>
           </div>
+          <button type="button" class="buy-btn" data-buy>Beli Sekarang</button>
         </article>
 
-        <article class="product-card">
+        <article class="product-card" data-name="Vertex POS Terminal" data-price="6750000">
           <div class="product-top">
             <span class="product-badge badge-best">Pilihan</span>
             <span class="product-price">Rp 6.750.000</span>
@@ -168,9 +170,10 @@
             <span>Stok: 42</span>
             <span>Garansi 3 th</span>
           </div>
+          <button type="button" class="buy-btn" data-buy>Beli Sekarang</button>
         </article>
 
-        <article class="product-card">
+        <article class="product-card" data-name="Halo Smart Label Printer" data-price="980000">
           <div class="product-top">
             <span class="product-badge badge-hot">Terlaris</span>
             <span class="product-price">Rp 980.000</span>
@@ -181,9 +184,10 @@
             <span>Stok: 210</span>
             <span>Garansi 1 th</span>
           </div>
+          <button type="button" class="buy-btn" data-buy>Beli Sekarang</button>
         </article>
 
-        <article class="product-card">
+        <article class="product-card" data-name="Zenith Cold Storage Unit" data-price="12400000">
           <div class="product-top">
             <span class="product-badge badge-new">Baru</span>
             <span class="product-price">Rp 12.400.000</span>
@@ -194,9 +198,10 @@
             <span>Stok: 18</span>
             <span>Garansi 3 th</span>
           </div>
+          <button type="button" class="buy-btn" data-buy>Beli Sekarang</button>
         </article>
 
-        <article class="product-card">
+        <article class="product-card" data-name="Pulse Inventory Sensor" data-price="2150000">
           <div class="product-top">
             <span class="product-badge badge-best">Pilihan</span>
             <span class="product-price">Rp 2.150.000</span>
@@ -207,6 +212,7 @@
             <span>Stok: 96</span>
             <span>Garansi 2 th</span>
           </div>
+          <button type="button" class="buy-btn" data-buy>Beli Sekarang</button>
         </article>
 
       </div>
@@ -272,6 +278,45 @@
     </section>
 
   </main>
+</div>
+
+<!-- ===== CHECKOUT MODAL ===== -->
+<div class="checkout-overlay" id="checkoutOverlay">
+  <div class="checkout-modal" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+    <button type="button" class="checkout-close" id="checkoutClose" aria-label="Tutup">&times;</button>
+
+    <p class="eyebrow">Checkout Ringkas</p>
+    <h3 id="checkoutTitle" class="checkout-product-name">Nama Produk</h3>
+
+    <div class="checkout-row">
+      <span>Harga satuan</span>
+      <span class="checkout-price" id="checkoutUnitPrice">Rp 0</span>
+    </div>
+
+    <div class="checkout-row checkout-qty-row">
+      <span>Jumlah</span>
+      <div class="qty-control">
+        <button type="button" class="qty-btn" id="qtyMinus" aria-label="Kurangi">&minus;</button>
+        <span class="qty-value" id="qtyValue">1</span>
+        <button type="button" class="qty-btn" id="qtyPlus" aria-label="Tambah">&plus;</button>
+      </div>
+    </div>
+
+    <div class="checkout-row checkout-total-row">
+      <span>Subtotal</span>
+      <span class="checkout-total" id="checkoutTotal">Rp 0</span>
+    </div>
+
+    <div class="checkout-fields">
+      <input type="text" id="checkoutName" placeholder="Nama Anda" required>
+      <textarea id="checkoutNote" placeholder="Catatan tambahan (opsional)" rows="2"></textarea>
+    </div>
+
+    <button type="button" class="checkout-wa-btn" id="checkoutWaBtn">
+      Lanjutkan ke WhatsApp
+    </button>
+    <p class="checkout-hint">Kamu akan diarahkan ke WhatsApp dengan detail pesanan yang sudah terisi otomatis.</p>
+  </div>
 </div>
 
 <script src="script.js"></script>
