@@ -84,6 +84,103 @@ document.addEventListener('DOMContentLoaded', () => {
   const chartCard = document.querySelector('.chart-card');
   if (chartCard) chartObserver.observe(chartCard);
 
+  /* ---------------- Checkout modal -> WhatsApp ---------------- */
+  const WA_NUMBER = '6281234567890'; // ganti dengan nomor WhatsApp bisnis kamu (format 62xxxxxxxxxx)
+
+  const overlay = document.getElementById('checkoutOverlay');
+  const closeBtn = document.getElementById('checkoutClose');
+  const titleEl = document.getElementById('checkoutTitle');
+  const unitPriceEl = document.getElementById('checkoutUnitPrice');
+  const totalEl = document.getElementById('checkoutTotal');
+  const qtyValueEl = document.getElementById('qtyValue');
+  const qtyMinusBtn = document.getElementById('qtyMinus');
+  const qtyPlusBtn = document.getElementById('qtyPlus');
+  const nameInput = document.getElementById('checkoutName');
+  const noteInput = document.getElementById('checkoutNote');
+  const waBtn = document.getElementById('checkoutWaBtn');
+
+  let currentProduct = null;
+  let qty = 1;
+
+  const formatRupiah = (n) => 'Rp ' + n.toLocaleString('id-ID');
+
+  const renderCheckout = () => {
+    if (!currentProduct) return;
+    qtyValueEl.textContent = qty;
+    totalEl.textContent = formatRupiah(currentProduct.price * qty);
+  };
+
+  const openCheckout = (card) => {
+    currentProduct = {
+      name: card.dataset.name,
+      price: parseInt(card.dataset.price, 10) || 0
+    };
+    qty = 1;
+    titleEl.textContent = currentProduct.name;
+    unitPriceEl.textContent = formatRupiah(currentProduct.price);
+    nameInput.value = '';
+    noteInput.value = '';
+    renderCheckout();
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => nameInput.focus(), 200);
+  };
+
+  const closeCheckout = () => {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  document.querySelectorAll('[data-buy]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const card = btn.closest('.product-card');
+      if (card) openCheckout(card);
+    });
+  });
+
+  closeBtn.addEventListener('click', closeCheckout);
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeCheckout();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.classList.contains('open')) closeCheckout();
+  });
+
+  qtyMinusBtn.addEventListener('click', () => {
+    qty = Math.max(1, qty - 1);
+    renderCheckout();
+  });
+  qtyPlusBtn.addEventListener('click', () => {
+    qty += 1;
+    renderCheckout();
+  });
+
+  waBtn.addEventListener('click', () => {
+    if (!currentProduct) return;
+    if (!nameInput.value.trim()) {
+      nameInput.focus();
+      return;
+    }
+
+    const total = currentProduct.price * qty;
+    const lines = [
+      `Halo, saya ingin memesan produk berikut:`,
+      ``,
+      `Produk: ${currentProduct.name}`,
+      `Jumlah: ${qty}`,
+      `Subtotal: ${formatRupiah(total)}`,
+      `Nama: ${nameInput.value.trim()}`
+    ];
+    if (noteInput.value.trim()) {
+      lines.push(`Catatan: ${noteInput.value.trim()}`);
+    }
+
+    const message = encodeURIComponent(lines.join('\n'));
+    const waUrl = `https://wa.me/${WA_NUMBER}?text=${message}`;
+    window.open(waUrl, '_blank');
+    closeCheckout();
+  });
+
   /* ---------------- CTA form ---------------- */
   const ctaForm = document.getElementById('ctaForm');
   const formSuccess = document.getElementById('formSuccess');
